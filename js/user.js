@@ -120,9 +120,9 @@ function updateUIOnUserLogin() {
 
 async function toggleFavorite() {
   if (this.checked) {
-    await User.addNewFavorite(currentUser.username, $(this).parent().attr('id'))
+    await User.addNewFavorite(currentUser.username, $(this).parent().attr('id'));
   } else {
-    await User.removeFavorite(currentUser.username, $(this).parent().attr('id'))
+    await User.removeFavorite(currentUser.username, $(this).parent().attr('id'));
   }
 };
 

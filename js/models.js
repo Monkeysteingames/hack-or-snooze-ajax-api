@@ -93,12 +93,13 @@ class StoryList {
   }
 
   async removeStory(user, storyId) {
+    let token = user.loginToken;
     //make a DELETE request to the url to the story we passed in
     await axios({
       url: `${BASE_URL}/stories/${storyId}`,
       method: "DELETE",
-      data: { token: user.loginToken, }
-    })
+      data: { token }
+    });
   }
 
 }
@@ -219,6 +220,8 @@ class User {
     }
   }
 
+
+  /** get user authentication and add favorite to currentUser data */
   static async addNewFavorite(username, storyId) {
     let token = currentUser.loginToken;
     const response = await axios({
@@ -226,9 +229,9 @@ class User {
       method: "POST",
       data: { token }
     })
-    console.log(response.data);
   }
 
+  /** get user authentication and remove favorite from currentUser data */
   static async removeFavorite(username, storyId) {
     let token = currentUser.loginToken;
     const response = await axios({
@@ -236,7 +239,6 @@ class User {
       method: "DELETE",
       data: { token }
     })
-    console.log(response.data);
   }
 
 }

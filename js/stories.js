@@ -120,9 +120,14 @@ async function createNewStoryAndAddToPage() {
 
 $formSubmitButton.on('click', createNewStoryAndAddToPage);
 
-function deleteStory(evt) {
-  console.log(evt);
-  //await storyList.removeStory(currentUser);
+async function deleteStory() {
+  //remove story from api and DOM
+  await storyList.removeStory(currentUser, $(this).parent().attr('id'));
+  $(this).parent().hide();
+
+  //refresh UI
+  getAndShowStoriesOnStart();
 }
 
-$deleteButton.on('click', deleteStory());
+/** Remove story on trash can click function */
+$(document).on('click', '.fa-trash-o', deleteStory);
