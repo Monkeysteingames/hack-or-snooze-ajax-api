@@ -41,6 +41,7 @@ function generateStoryMarkup(story) {
       if (story.storyId == currentUser.favorites[i].storyId) {
         return $(`
     <li id="${story.storyId}">
+    <i class="fa fa-trash-o" style="color:red;"></i>
     <input type="checkbox" class="star" checked>
       <a href="${story.url}" target="a_blank" class="story-link">
         ${story.title}
@@ -55,6 +56,7 @@ function generateStoryMarkup(story) {
   }
   return $(`
   <li id="${story.storyId}">
+  <i class="fa fa-trash-o" style="color:red;"></i>
   <input type="checkbox" class="star" >
     <a href="${story.url}" target="a_blank" class="story-link">
       ${story.title}
@@ -118,3 +120,9 @@ async function createNewStoryAndAddToPage() {
 
 $formSubmitButton.on('click', createNewStoryAndAddToPage);
 
+function deleteStory(evt) {
+  console.log(evt);
+  //await storyList.removeStory(currentUser);
+}
+
+$deleteButton.on('click', deleteStory());

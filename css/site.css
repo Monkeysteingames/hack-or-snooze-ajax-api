@@ -122,11 +122,10 @@ form > hr {
   }
 }
 
-/*Following CSS was copied used */
-
 .star {
   visibility:hidden;
   font-size: 15px;
+  margin-top: 20px;
   cursor:pointer;
 }
 .star:before {
@@ -137,4 +136,8 @@ form > hr {
 .star:checked:before {
  content: "\2606";
  position: absolute;
+}
+
+.fa-trash-o {
+  cursor: pointer;
 }

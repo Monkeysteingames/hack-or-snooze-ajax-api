@@ -91,6 +91,16 @@ class StoryList {
     const story = new Story(response.data.story.storyId, response.data.story.title, response.data.story.author, response.data.story.url, response.data.story.username, response.data.story.createdAt);
     return story;
   }
+
+  async removeStory(user, storyId) {
+    //make a DELETE request to the url to the story we passed in
+    await axios({
+      url: `${BASE_URL}/stories/${storyId}`,
+      method: "DELETE",
+      data: { token: user.loginToken, }
+    })
+  }
+
 }
 
 
